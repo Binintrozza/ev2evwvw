@@ -32,7 +32,13 @@ function Script()
             wait(1) -- chờ 1 giây trước khi lặp lại
         end
     end)
+    MainSection:NewSlider("Walkspeed", "Changes how fast you walk.", 250, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+    end)
 
+    MainSection:NewSlider("JumpPower", "Changes how fast you jump.", 250, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+    end)
 
     -- Map
     local Map = Window:NewTab("TELEPORT")
