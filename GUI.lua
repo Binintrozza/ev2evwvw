@@ -13,10 +13,21 @@ function Script()
     end)
     MainSection:NewToggle("REDEEM GIFT ONLINE", "GIFT", function(toggleState)
         MainToggleEnabled = toggleState -- cập nhật trạng thái toggle
-    
+        local MainToggleEnabled = false
         while MainToggleEnabled do -- lặp lại nếu toggle được bật
             local Event = game:GetService("ReplicatedStorage").Remote.Function.Spin["[C-S]TrySpin"]
             Event:InvokeServer()
+    
+            wait(1) -- chờ 1 giây trước khi lặp lại
+        end
+    end)
+
+    MainSection:NewToggle("AUTO REBIRTH", "AUTO FOR NIGHT AFK", function(toggleState)
+        MainToggleEnabled = toggleState -- cập nhật trạng thái toggle
+    
+        while MainToggleEnabled do -- lặp lại nếu toggle được bật
+            local Event = game:GetService("ReplicatedStorage").Remote.Event.Rebirth["[C-S]TryBuyRebirth"]
+            Event:FireServer()
     
             wait(1) -- chờ 1 giây trước khi lặp lại
         end
