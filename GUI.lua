@@ -3,7 +3,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Binin
 
 
 function Script()
-    local Window = Library.CreateLib("huythanh", "Serpent")
+    local Window = Library.CreateLib("Binintrozz", "Serpent")
 
 
 
@@ -93,7 +93,7 @@ function Script()
         eggToggleEnabled = toggleState -- cập nhật trạng thái toggle
     
         while eggToggleEnabled do -- lặp lại nếu toggle được bật
-            local A_1 = "Coin3000000"
+            local A_1 = "Coin3M"
             local Event = game:GetService("ReplicatedStorage").Remote.Function.Luck["[C-S]DoLuck"]
             Event:InvokeServer(A_1)
     
@@ -104,7 +104,7 @@ function Script()
         eggToggleEnabled = toggleState -- cập nhật trạng thái toggle
     
         while eggToggleEnabled do -- lặp lại nếu toggle được bật
-            local A_1 = "Coin10000000"
+            local A_1 = "Coin10M"
             local Event = game:GetService("ReplicatedStorage").Remote.Function.Luck["[C-S]DoLuck"]
             Event:InvokeServer(A_1)
     
@@ -116,7 +116,7 @@ function Script()
         eggToggleEnabled = toggleState -- cập nhật trạng thái toggle
     
         while eggToggleEnabled do -- lặp lại nếu toggle được bật
-            local A_1 = "Coin12000000"
+            local A_1 = "Coin12M"
             local Event = game:GetService("ReplicatedStorage").Remote.Function.Luck["[C-S]DoLuck"]
             Event:InvokeServer(A_1)
     
@@ -128,7 +128,7 @@ function Script()
         eggToggleEnabled = toggleState -- cập nhật trạng thái toggle
     
         while eggToggleEnabled do -- lặp lại nếu toggle được bật
-            local A_1 = "Coin15000000"
+            local A_1 = "Coin15M"
             local Event = game:GetService("ReplicatedStorage").Remote.Function.Luck["[C-S]DoLuck"]
             Event:InvokeServer(A_1)
     
@@ -139,7 +139,7 @@ function Script()
         eggToggleEnabled = toggleState -- cập nhật trạng thái toggle
     
         while eggToggleEnabled do -- lặp lại nếu toggle được bật
-            local A_1 = "Coin35000000"
+            local A_1 = "Coin35M"
             local Event = game:GetService("ReplicatedStorage").Remote.Function.Luck["[C-S]DoLuck"]
             Event:InvokeServer(A_1)
     
@@ -151,7 +151,7 @@ function Script()
         eggToggleEnabled = toggleState -- cập nhật trạng thái toggle
     
         while eggToggleEnabled do -- lặp lại nếu toggle được bật
-            local A_1 = "Coin50000000"
+            local A_1 = "Coin50M"
             local Event = game:GetService("ReplicatedStorage").Remote.Function.Luck["[C-S]DoLuck"]
             Event:InvokeServer(A_1)
     
@@ -162,7 +162,7 @@ function Script()
         eggToggleEnabled = toggleState -- cập nhật trạng thái toggle
     
         while eggToggleEnabled do -- lặp lại nếu toggle được bật
-            local A_1 = "Coin100000000"
+            local A_1 = "Coin100M"
             local Event = game:GetService("ReplicatedStorage").Remote.Function.Luck["[C-S]DoLuck"]
             Event:InvokeServer(A_1)
     
@@ -174,7 +174,7 @@ function Script()
         eggToggleEnabled = toggleState -- cập nhật trạng thái toggle
     
         while eggToggleEnabled do -- lặp lại nếu toggle được bật
-            local A_1 = "Coin200000000"
+            local A_1 = "Coin200M"
             local Event = game:GetService("ReplicatedStorage").Remote.Function.Luck["[C-S]DoLuck"]
             Event:InvokeServer(A_1)
     
@@ -185,7 +185,7 @@ function Script()
         eggToggleEnabled = toggleState -- cập nhật trạng thái toggle
     
         while eggToggleEnabled do -- lặp lại nếu toggle được bật
-            local A_1 = "Coin400000000"
+            local A_1 = "Coin400M"
             local Event = game:GetService("ReplicatedStorage").Remote.Function.Luck["[C-S]DoLuck"]
             Event:InvokeServer(A_1)
     
@@ -199,7 +199,7 @@ function Script()
     local CreditsSection = Credits:NewSection("Credits")
 
 
-    CreditsSection:NewLabel("Created by HUYTHANH")
+    CreditsSection:NewLabel("Created by Binintrozz")
     
 
 
