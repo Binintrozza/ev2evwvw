@@ -3,7 +3,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Binin
 
 
 function Script()
-    local Window = Library.CreateLib("Binintrozz", "Serpent")
+    local Window = Library.CreateLib("HUYTHANH", "Serpent")
 
 
 
@@ -199,7 +199,7 @@ function Script()
     local CreditsSection = Credits:NewSection("Credits")
 
 
-    CreditsSection:NewLabel("Created by Binintrozz")
+    CreditsSection:NewLabel("Created by HUYTHANH")
     
 
 
