@@ -3,7 +3,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Binin
 
 
 function Script()
-    local Window = Library.CreateLib("HUYTHANH", "Serpent")
+    local Window = Library.CreateLib("huythanh", "Serpent")
 
 
 
