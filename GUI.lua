@@ -3,7 +3,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Binin
 
 
 function Script()
-    local Window = Library.CreateLib("huythanh", "Serpent")
+    local Window = Library.CreateLib("[10M] Glide Race YUTO HUB", "Serpent")
 
 
 
@@ -216,7 +216,7 @@ function Script()
     local CreditsSection = Credits:NewSection("Credits")
 
 
-    CreditsSection:NewLabel("Created by huythanh")
+    CreditsSection:NewLabel("Created by YUTO HUB")
     
 
 
