@@ -1,0 +1,162 @@
+local isSpawningActive = true 
+
+local function autoChallCheck()
+    if game.PlaceId == 15601725874 and _G.config.AutoChall then
+        local challengeNumber = game.Workspace.ChallengeElevators.Data.ChallengeNumber.Value
+        if challengeNumber ~= _G.config.Chall then
+            local player = game.Players.LocalPlayer
+            player.Character:SetPrimaryPartCFrame(CFrame.new(131.874512, 7.22859669, -68.9522934, -1, 0, 0, 0, 1, 0, 0, 0, -1))
+            wait(3)
+            game:GetService("ReplicatedStorage").Functions.RequestChallengeStart:InvokeServer()
+        end
+    end
+end
+
+if game.PlaceId ~= 15601725874 then
+
+    local function onWaveChanged()
+        local waveValue = game.Workspace.Info.Wave.Value
+        print("Current wave is: " .. tostring(waveValue))
+
+        if waveValue == _G.config.waveToSellUnits then
+            local towersFolder = workspace.Towers
+            for _, tower in ipairs(towersFolder:GetChildren()) do
+                if tower:IsA("Model") then
+                    local args = {
+                        [1] = tower
+                    }
+                    local sellFunction = game:GetService("ReplicatedStorage").Functions:FindFirstChild("SellTower")
+                    if sellFunction then
+                        sellFunction:InvokeServer(unpack(args))
+                    end
+                end
+            end
+            
+            isSpawningActive = false
+        end
+    end
+
+    local wave = game.Workspace:FindFirstChild("Info"):FindFirstChild("Wave")
+    if wave then
+        wave.Changed:Connect(onWaveChanged)
+    end
+
+    spawn(function()
+        while isSpawningActive do
+            wait(_G.config.spawnInterval)
+            
+            if not isSpawningActive then
+                break
+            end
+
+            local voteEvent = game:GetService("ReplicatedStorage").Events.Client:FindFirstChild("VoteStartGame")
+            if voteEvent then
+                voteEvent:FireServer()
+            end
+
+            local unitName = _G.unitNames[_G.unitIndex]
+            local ownedTower = game:GetService("Players").LocalPlayer.OwnedTowers:FindFirstChild(unitName)
+            if ownedTower then
+                local mapFolder = game.Workspace:FindFirstChild("Map")
+                if mapFolder then
+                    for _, planet in ipairs(mapFolder:GetChildren()) do
+                        local waypointFolder = planet:FindFirstChild("Waypoints")
+                        if waypointFolder then
+                            local waypoint = waypointFolder:FindFirstChild(tostring(config.waypointIndex))
+                            if waypoint then
+                                local waypointPosition = waypoint.Position
+                                local args1 = {
+                                    [1] = ownedTower,
+                                    [2] = CFrame.new(waypointPosition), 
+                                    [3] = false,
+                                    [4] = true
+                                }
+
+                                local spawnFunction = game:GetService("ReplicatedStorage").Functions:FindFirstChild("SpawnTower")
+                                if spawnFunction then
+                                    spawnFunction:InvokeServer(unpack(args1))
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+            
+            _G.unitIndex = _G.unitIndex + 1
+            if _G.unitIndex > #_G.unitNames then
+                _G.unitIndex = 1
+            end
+        end
+    end)
+
+    spawn(function()
+        while true do
+            wait(_G.config.upgradeInterval)
+            local towers = workspace.Towers:GetChildren()
+            if #towers > 0 then
+                table.sort(towers, function(a, b)
+                    return a.Position.Y < b.Position.Y
+                end)
+
+                for _, tower in ipairs(towers) do
+                    local args2 = {
+                        [1] = tower
+                    }
+
+                    local upgradeFunction = game:GetService("ReplicatedStorage").Functions:FindFirstChild("Upgrade")
+                    if upgradeFunction then
+                        upgradeFunction:InvokeServer(unpack(args2))
+                    end
+                end
+            end
+        end
+    end)
+
+    task.spawn(function()
+        while true do
+            local messageValue = game.Workspace.Info.Message.Value
+            if messageValue == "GAME OVER" or messageValue == "VICTORY" then
+                if _G.config.EndGame.Replay then
+                    local args = {
+                        [1] = "Replay"
+                    }
+                    game:GetService("ReplicatedStorage").Events.ExitGame:FireServer(unpack(args))
+                elseif _G.config.EndGame.Next then
+                    local args = {
+                        [1] = "Next"
+                    }
+                    game:GetService("ReplicatedStorage").Events.ExitGame:FireServer(unpack(args))
+                elseif _G.config.EndGame.Return then
+                    local args = {
+                        [1] = "Return"
+                    }
+                    game:GetService("ReplicatedStorage").Events.ExitGame:FireServer(unpack(args))
+                end
+                task.wait(1)
+            end
+            task.wait(1)
+        end
+    end)
+
+    local args4 = {
+        [1] = "VFX",
+        [2] = false
+    }
+
+    game:GetService("ReplicatedStorage").Events.UpdateSetting:FireServer(unpack(args4))
+
+    local args5 = {
+        [1] = "DamageIndicator",
+        [2] = false
+    }
+
+    game:GetService("ReplicatedStorage").Events.UpdateSetting:FireServer(unpack(args5))
+
+    local args = {
+        [1] = "2x"
+    }
+
+    game:GetService("ReplicatedStorage").Events.Client.SpeedRemote:FireServer(unpack(args))
+end
+
+autoChallCheck()
